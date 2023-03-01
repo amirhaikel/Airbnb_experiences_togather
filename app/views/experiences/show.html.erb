@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @experience %>
+
+<div>
+  <% if policy(@experience).edit? %>
+    <%= link_to "Edit this experience", edit_experience_path(@experience) %>
+  <% end %>
+  <%= link_to "Back to experiences", experiences_path %>
+  <%= button_to "Destroy this experience", @experience, method: :delete if policy(@experience).destroy? %>
+</div>
