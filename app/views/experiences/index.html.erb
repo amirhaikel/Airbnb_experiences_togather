@@ -1,14 +1,28 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Experiences<h1>
-
-<div id="experiences">
-  <% @experiences.each do |experience| %>
-    <%= render experience %>
-    <p>
-      <%= link_to "Show this experience", experience %>
-    </p>
-  <% end %>
+<div class="bg-image">
+ <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 text-center">
+        <p class="text-success"><%= notice %></p>
+        <h1 class="text-white">Hello Host!</h1>
+        <h3 class="text-white">Start to host new experience</h3>
+      </div>
+    </div>
+    <div id="experiences" class="row mt-5">
+      <% @experiences.each do |experience| %>
+        <div class="col-md-4 mb-4">
+          <%= render experience %>
+          <p>
+            <%= link_to "Show this experience", experience, class: "btn btn-primary" %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+    <% if policy(Experience).new? %>
+      <div class="row">
+        <div class="col-md-12 text-center mt-5">
+          <%= link_to "New experience", new_experience_path, class: "btn btn-success btn-lg" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New experience", new_experience_path if policy(Experience).new? %>
