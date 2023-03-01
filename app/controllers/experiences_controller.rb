@@ -1,7 +1,7 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: %i[ show edit update destroy ]
     def index
-        @experiences = policy_scope(Experience).all
+      @experiences = policy_scope(Experience).all
     end
 
     def show
