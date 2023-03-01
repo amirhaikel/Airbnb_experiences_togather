@@ -1,13 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Experiences<h1>
+<h1>EXPERIENCES<h1>
 
-<div id="experiences">
+<div id="experiences" class="container">
   <% @experiences.each do |experience| %>
+    <br>
     <%= render experience %>
+     <% experience.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
     <p>
       <%= link_to "Show this experience", experience %>
     </p>
+    <br>
   <% end %>
 </div>
 

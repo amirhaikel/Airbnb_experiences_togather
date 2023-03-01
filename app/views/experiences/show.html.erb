@@ -2,6 +2,10 @@
 
 <%= render @experience %>
 
+<% @experience.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+
 <div>
   <% if policy(@experience).edit? %>
     <%= link_to "Edit this experience", edit_experience_path(@experience) %>
