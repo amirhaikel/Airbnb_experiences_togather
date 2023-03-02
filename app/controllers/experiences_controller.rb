@@ -5,10 +5,7 @@ class ExperiencesController < ApplicationController
     end
 
     def show
-<<<<<<< HEAD
-=======
        @experience = Experience.find(params[:id])
->>>>>>> 18e8cbe (amend the controller)
     end
 
     def new
