@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'reviews/new'
   devise_for :users
   root to: "pages#home"
   get "/about", to: "pages#about"
@@ -6,13 +7,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   resources :experiences do
-    resources :re
-  end
-  # root "articles#index"
-end
-
-Rails.application.routes.draw do
-  resources :restaurants do
     resources :reviews, only: [:new]
   end
+  # root "articles#index"
 end
