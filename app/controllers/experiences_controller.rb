@@ -5,6 +5,7 @@ class ExperiencesController < ApplicationController
     end
 
     def show
+       @experience = Experience.find(params[:id])
     end
 
     def new
