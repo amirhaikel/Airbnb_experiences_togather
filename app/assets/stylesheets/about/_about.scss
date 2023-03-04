@@ -1,0 +1,38 @@
+.template-about .page-header h1 {
+  margin-bottom: 8px;
+}
+
+.h2, h2 {
+  font-size: 32px;
+  line-height: 1.375;
+}
+
+.fastFacts__container {
+  padding: 0;
+  max-width: 1600px;
+}
+
+.fastFacts__fastFact {
+  padding: 40px 40px 32px;
+  background-color: #fff;
+  border-radius: 12px;
+  scroll-snap-align: start;
+  overflow-wrap: break-word;
+}
+
+.fastFacts__fastFact {
+  padding: 32px;
+}
+
+.fastFacts__fastFact {
+  grid-column: span 3;
+  margin-bottom: 16px;
+}
+
+div {
+  display: block;
+}
+
+[data-reveal].visible, body.js-no-intersection-observer [data-reveal] {
+  opacity: 1;
+}

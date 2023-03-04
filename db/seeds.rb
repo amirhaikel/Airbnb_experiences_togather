@@ -8,12 +8,11 @@
 require "open-uri"
 require "faker"
 
-image_url = Faker::LoremFlickr.image(size: "300x400", search_terms: ['activity', 'outdoor'])
-
 puts "Cleaning up database..."
 Experience.destroy_all
 User.destroy_all
 puts "Database cleaned"
+<<<<<<< HEAD
 puts "Creating test user..."
 User.destroy_all
 test_user = User.new(
@@ -25,6 +24,9 @@ test_user = User.new(
 )
 test_user.save!
 puts "Test user created!"
+=======
+
+image_url = Faker::LoremFlickr.image(size: "300x400", search_terms: ['activity', 'outdoor'])
 
 10.times do |i|
   puts "Importing experiences from #{i+1}"
