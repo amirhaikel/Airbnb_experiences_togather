@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-6 offset-md-3 text-center">
         <p class="text-success"><%= notice %></p>
-        <h1 class="text-white">Hello Host!</h1>
+        <h1 class="text-white">Hello <%=current_user.first_name%> </h1>
         <h3 class="text-white">Start to host new experience</h3>
       </div>
     </div>
@@ -32,3 +32,13 @@
     <% end %>
   </div>
 </div>
+<div>
+
+<p>What’s an experience?
+It’s an activity that goes beyond the typical tour or class, designed and led by locals all over the world. Show off your city, craft, cause, or culture by hosting an experience.</p>
+</div>
+ <ul class="nav col-md-6 offset-md-3 justify-content-xl-center">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+    </ul>
