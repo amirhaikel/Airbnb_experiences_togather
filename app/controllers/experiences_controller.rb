@@ -1,7 +1,7 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: %i[ show edit update destroy ]
     def index
-        @experiences = policy_scope(Experience).all
+      @experiences = policy_scope(Experience).all
     end
 
     def show
@@ -9,8 +9,8 @@ class ExperiencesController < ApplicationController
     end
 
     def new
-       @experience = Experience.new
-       authorize(@experience)
+      @experience = Experience.new
+      authorize(@experience)
     end
 
     def create
@@ -50,6 +50,6 @@ class ExperiencesController < ApplicationController
     end
 
     def experience_params
-      params.require(:experience).permit(:name, :description, :price)
+      params.require(:experience).permit(:name, :description, :price, photos: [])
     end
 end

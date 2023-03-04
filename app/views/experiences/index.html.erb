@@ -1,3 +1,4 @@
+
 <div class="bg-image">
  <div class="container">
     <div class="row">
@@ -9,13 +10,18 @@
     </div>
     <div id="experiences" class="row mt-5">
       <% @experiences.each do |experience| %>
-        <div class="col-md-4 mb-4">
-          <%= render experience %>
-          <p>
-            <%= link_to "Show this experience", experience, class: "btn btn-primary" %>
-          </p>
-        </div>
+      <br>
+      <div class="col-md-4 mb-4">
+      <%= render experience %>
+      <% experience.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
       <% end %>
+    <p>
+      <%= link_to "Show this experience", experience, class: "btn btn-primary" %>
+    </p>
+    <br>
+      </div>
+    <% end %>
     </div>
     <% if policy(Experience).new? %>
       <div class="row">

@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "open-uri"
+require "faker"
+
+image_url = Faker::LoremFlickr.image(size: "300x400", search_terms: ['activity', 'outdoor'])
+
+puts "Cleaning up database..."
+Experience.destroy_all
+puts "Database cleaned"
+10.times do |i|
+  puts "Importing experiences from #{i+1}"
+  file = URI.open(image_url)
+  experience = Experience.new(
+    name: Faker::Hobby.activity,
+    description: Faker::Lorem.paragraph(sentence_count: 3),
+    price: Faker::Commerce.price(range: 10..100),
+    user_id: 2
+  )
+    experience.photos.attach(io: file, filename: "#{experience.name}.png", content_type: "image/png")
+    experience.save!
+  end
+puts "Experiences created!"
