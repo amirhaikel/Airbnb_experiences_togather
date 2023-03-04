@@ -20,7 +20,7 @@ puts "Database cleaned"
     name: Faker::Hobby.activity,
     description: Faker::Lorem.paragraph(sentence_count: 3),
     price: Faker::Commerce.price(range: 10..100),
-    user_id: 2
+    user_id: 1
   )
     experience.photos.attach(io: file, filename: "#{experience.name}.png", content_type: "image/png")
     experience.save!
