@@ -1,1 +1,30 @@
 // Specific CSS for your home-page
+
+.homepage-h1{
+  text-align:  center;
+  padding-top:  100px;
+  overflow: hidden; /* Ensures the cursor is hidden during animation */
+  border-right: solid rgb(255, 255, 255); /* Creates the cursor effect */
+  white-space: nowrap; /* Keeps text on one line */
+  margin: 0 auto; /* Centers the element */
+  letter-spacing: 0; /* Adjusts spacing between characters */
+  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The cursor blink animation */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: rgb(255, 255, 255) }
+}
+
+.homepage-paragraph{
+  text-align: center;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 70px;
+}
