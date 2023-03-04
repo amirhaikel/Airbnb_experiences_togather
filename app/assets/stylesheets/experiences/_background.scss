@@ -1,5 +1,5 @@
 .bg-image {
-    background-image: url("https://images.unsplash.com/photo-1532635241-17e820acc59f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1415&q=80");
+    background-image: url("https://source.unsplash.com/random/?activity");
     background-size: cover;
     background-position: center;
     min-height: 40vh;
@@ -10,6 +10,45 @@ h3 {
     margin: 0;
     color: white;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    font-size: 32px;
+    font-size: 36px;
     font-weight: bold;
+    background-color: opacity($color: #000000)
+}
+
+
+.bg-image h1 {
+    overflow: hidden;
+    /* Ensures the cursor is hidden during animation */
+    border-right: solid rgb(255, 255, 255);
+    /* Creates the cursor effect */
+    white-space: nowrap;
+    /* Keeps text on one line */
+    margin: 0 auto;
+    /* Centers the element */
+    letter-spacing: 0;
+    /* Adjusts spacing between characters */
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+/* The cursor blink animation */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: transparent
+    }
 }

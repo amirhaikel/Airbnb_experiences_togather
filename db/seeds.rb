@@ -8,11 +8,12 @@
 require "open-uri"
 require "faker"
 
-image_url = Faker::LoremFlickr.image(size: "300x400", search_terms: ['activity', 'outdoor'])
-
 puts "Cleaning up database..."
 Experience.destroy_all
 puts "Database cleaned"
+
+image_url = Faker::LoremFlickr.image(size: "300x400", search_terms: ['activity', 'outdoor'])
+
 10.times do |i|
   puts "Importing experiences from #{i+1}"
   file = URI.open(image_url)
