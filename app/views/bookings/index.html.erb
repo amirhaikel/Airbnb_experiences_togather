@@ -1,0 +1,14 @@
+ <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 text-center">
+        <p class="text-success"><%= notice %></p>
+        <h1 class="text-black"><%=@experience.name%> </h1>
+        <h3 class="text-black">These are the bookings</h3>
+      </div>
+    </div>
+    <div id="bookings" class="row mt-5">
+      <% @bookings.each do |booking| %>
+      <br>
+      <div class="col-md-4 mb-4">
+      <%= render booking %>
+      <% end %>

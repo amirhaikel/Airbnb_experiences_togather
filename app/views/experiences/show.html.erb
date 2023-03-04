@@ -13,3 +13,9 @@
   <%= link_to "Back to experiences", experiences_path %>
   <%= button_to "Destroy this experience", @experience, method: :delete if policy(@experience).destroy? %>
 </div>
+
+<h1>New booking</h1>
+<%= simple_form_for [@experience, @booking] do |f| %>
+  <%= f.input :booking_date %>
+  <%= f.submit "Submit booking", class: "btn btn-primary" %>
+<% end %>
