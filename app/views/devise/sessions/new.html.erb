@@ -1,21 +1,30 @@
 <div class="container">
-  <h2>Log in</h2>
+  <h2 class="text-center mb-4">Log in</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),
-    data: {turbo: false}) do |f| %>
-    <div class="form-floating mb-3">
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+    <div class="col-md-12">
+      <%= f.label :email, "Email", class: "form-label" %>
       <%= f.input :email,
+                  label: false,
                   required: false,
                   autofocus: true,
-                  input_html: { autocomplete: "email" } %>
+                  input_html: { autocomplete: "email", class: "form-control" } %>
+    </div>
+
+    <div class="col-md-12">
+      <%= f.label :password, "Password", class: "form-label" %>
       <%= f.input :password,
+                  label: false,
                   required: false,
-                  input_html: { autocomplete: "current-password" } %>
+                  input_html: { autocomplete: "current-password", class: "form-control" } %>
+    </div>
+
+    <div class="col-md-12">
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+    <div class="col-md-12">
+      <%= f.button :submit, "Log in", class: "btn btn-primary" %>
     </div>
   <% end %>
 
