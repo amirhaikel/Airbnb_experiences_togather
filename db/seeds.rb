@@ -18,7 +18,7 @@ test_user = User.new(
   first_name: "Laika",
   last_name: "Chee",
   phone_no: 88888888,
-  email: "cheelaika@gmail.com",
+  email: "johndoe@gmail.com",
   password: "password"
 )
 test_user.save!

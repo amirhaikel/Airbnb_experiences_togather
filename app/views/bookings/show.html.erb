@@ -1,0 +1,23 @@
+<h1> This is your booking! </h2>
+
+<ul>
+  <li> Experience name = <%= @booking.experience.name %> </li>
+  <br>
+  <li> Description = <%= @booking.experience.description %> </li>
+  <br>
+  <li> Price = <%= @booking.experience.price %> </li>
+  <br>
+  <li> User name = <%= @booking.user_name%>
+  <br>
+  <li> Booking_date = <%= @booking.booking_date %> </li>
+
+</ul>
+<p> See you there! </p>
+
+<div>
+  <% if policy(@booking).edit? %>
+    <%= link_to "Edit your booking", edit_experience_booking_path(@experience, @booking) %>
+  <% end %>
+  <%= link_to "View other experiences", experiences_path %>
+  <%= link_to "Cancel your booking", experience_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
+</div>

@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_experience, only: %i[index new create show]
+  before_action :set_experience, only: %i[index new create show edit update destroy]
   def index
     @bookings = policy_scope(@experience.bookings)
   end
@@ -18,6 +18,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.user_name = "#{current_user.first_name} #{current_user.last_name}"
     @booking.experience = @experience
 
     authorize(@booking)
@@ -25,24 +26,32 @@ class BookingsController < ApplicationController
     if @booking.save!
       redirect_to experience_booking_path(@experience, @booking), notice: "Booking was successfully placed."
     else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    @booking = Booking.find(params[:id])
+    authorize(@booking)
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    authorize(@booking)
     if @booking.update(booking_params)
-      redirect_to experience_booking_path(@experience, @booking) , notice: "Booking was successfully updated."
+      redirect_to experience_booking_path(@experience, @booking), notice: "Booking was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
+    @booking = Booking.find(params[:id])
+    authorize(@booking)
     @booking.destroy
-    redirect_to experience_bookings_path, notice: "Booking was successfully destroyed."
+    redirect_to experience_path(@experience), notice: "Booking was successfully destroyed."
   end
+
   private
 
   def set_experience
@@ -52,5 +61,4 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:booking_date)
   end
-
 end

@@ -43,7 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_070315) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date "booking_date"
+    t.date "booking_date", null: false
+    t.string "user_name", null: false
     t.bigint "experience_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -63,7 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_070315) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text "content"
+    t.text "content", null: false
+    t.string "user_name", null: false
     t.bigint "experience_id", null: false
     t.bigint "booking_id", null: false
     t.datetime "created_at", null: false
