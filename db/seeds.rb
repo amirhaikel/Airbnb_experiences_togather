@@ -10,7 +10,19 @@ require "faker"
 
 puts "Cleaning up database..."
 Experience.destroy_all
+User.destroy_all
 puts "Database cleaned"
+puts "Creating test user..."
+User.destroy_all
+test_user = User.new(
+  first_name: "Laika",
+  last_name: "Chee",
+  phone_no: 88888888,
+  email: "johndoe@gmail.com",
+  password: "password"
+)
+test_user.save!
+puts "Test user created!"
 
 image_url = Faker::LoremFlickr.image(size: "300x400", search_terms: ['activity', 'outdoor'])
 
@@ -21,9 +33,10 @@ image_url = Faker::LoremFlickr.image(size: "300x400", search_terms: ['activity',
     name: Faker::Hobby.activity,
     description: Faker::Lorem.paragraph(sentence_count: 3),
     price: Faker::Commerce.price(range: 10..100),
-    user_id: 1
   )
-    experience.photos.attach(io: file, filename: "#{experience.name}.png", content_type: "image/png")
-    experience.save!
-  end
+  experience.user = test_user
+  experience.photos.attach(io: file, filename: "#{experience.name}.png", content_type: "image/png")
+  experience.save!
+end
 puts "Experiences created!"
+puts "Finished!"

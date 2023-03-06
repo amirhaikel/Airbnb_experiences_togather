@@ -7,28 +7,24 @@
           <h3 class="text-white">Start to host a new experience</h3>
           <p>What’s an experience?</p>
           <p>It’s an activity that goes beyond the typical tour or class, designed and led by locals all over the world. Show off your city, craft, cause, or culture by hosting an experience.</p>
-        
         </div>
       </div>
     </div>
   </div>
 <div>
-
 <div id="experiences" class="row mt-5">
   <% @experiences.each do |experience| %>
   <br>
     <div class="col-md-4 mb-4">
-      <%= render experience %>
       <% experience.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-      <p>
+        <p>
         <%= link_to "Show this experience", experience, class: "btn btn-primary" %>
       </p>
+      <%= render experience %>
+      <% end %>
       <br>
     </div>
   <% end %>
     </div>
 </div>
-
-

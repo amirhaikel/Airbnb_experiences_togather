@@ -4,15 +4,11 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+
   # Defines the root path route ("/")
   resources :experiences do
-    resources :re
+    resources :bookings, only: [:new, :create, :show, :index, :edit, :update]
+    resources :bookings, only: [:destroy], as: :booking_destroy
   end
   # root "articles#index"
-end
-
-Rails.application.routes.draw do
-  resources :restaurants do
-    resources :reviews, only: [:new]
-  end
 end
