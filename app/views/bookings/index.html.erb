@@ -1,16 +1,17 @@
- <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3 text-center">
-        <p class="text-success"><%= notice %></p>
-        <h1 class="text-black"><%=@experience.name%> </h1>
-        <h3 class="text-black">These are the bookings</h3>
-      </div>
-    </div>
-    <div id="bookings" class="row mt-5">
-      <% @bookings.each do |booking| %>
-      <br>
-      <div class="col-md-4 mb-4">
-      <%= render booking %>
-      <% end %>
 
-<%# add a button for host confirm the booking? %>
+<h1 class="text-black"><%="#{current_user.first_name} #{current_user.last_name}"%></h1>
+<h3 class="text-black">These are your bookings</h3>
+
+<% counter = 1 %>
+<% @bookings.each do |booking| %>
+  <div>
+    <h3>Booking <%= counter %></h3>
+    <p><strong>Experience Name:</strong> <%= booking.experience.name %></p>
+    <p><strong>Booking Date:</strong> <%= booking.booking_date %></p>
+    <p><strong>Number of Pax:</strong> <%= booking.number_of_pax %></p>
+    <p><strong>Booking Status:</strong> <%= booking.status %></p>
+  </div>
+  <% counter += 1 %>
+<% end %>
+
+<%# add a button to look into each booking %>

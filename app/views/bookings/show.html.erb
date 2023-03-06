@@ -1,20 +1,8 @@
 <h1> This is your booking! </h2>
 
-<ul>
-  <li> Experience name = <%= @booking.experience.name %> </li>
-  <br>
-  <li> Description = <%= @booking.experience.description %> </li>
-  <br>
-  <li> Price = <%= @booking.experience.price %> </li>
-  <br>
-  <li> User name = <%= @booking.user_name%>
-  <br>
-  <li> Booking date = <%= @booking.booking_date %> </li>
-  <br>
-  <li> Number of Pax = <%= @booking.number_of_pax %> </li>
-  <br>
-  <li> Status = <%= @booking.status %> </li>
-</ul>
+
+<%= render @booking %>
+
 <%# #if booking status is not marked as completed %>
   <div>
     <% if policy(@booking).edit? %>

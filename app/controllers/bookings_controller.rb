@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
-  before_action :set_experience, only: %i[index new create show edit update destroy]
+  before_action :set_experience, only: %i[new create show edit update destroy]
 
   def index
-    @bookings = policy_scope(@experience.bookings)
+    @bookings = policy_scope(Booking.where(user_id: current_user))
   end
 
   def show
