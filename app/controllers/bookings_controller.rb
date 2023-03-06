@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_experience, only: %i[index new create show edit update destroy]
+
   def index
     @bookings = policy_scope(@experience.bookings)
   end
@@ -20,6 +21,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.user_name = "#{current_user.first_name} #{current_user.last_name}"
     @booking.experience = @experience
+    @booking.status = "pending"
 
     authorize(@booking)
 
@@ -59,6 +61,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:booking_date)
+    params.require(:booking).permit(:booking_date, :number_of_pax, :comment)
   end
 end
