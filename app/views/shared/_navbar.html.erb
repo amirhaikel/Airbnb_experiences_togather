@@ -21,13 +21,15 @@
       <br>
       <li class="nav-item">
             <% if policy(Experience).new?%>
-            <%= link_to "Host An Experience", new_experience_path %>
+          <button type="button" class="btn btn-outline-primary"> <%= link_to "Host An Experience", new_experience_path %></button>          
             <% end %>
       </li>
       <br>
       <li class="nav-item">
-        <%= link_to "Experience", experiences_path %>
+        <button type="button" class="btn btn-outline-primary"> <%= link_to "Experience", experiences_path %></button> 
       </li>
+
+
       <%# <li class="nav-item dropdown"> %>
         <%# <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown link
