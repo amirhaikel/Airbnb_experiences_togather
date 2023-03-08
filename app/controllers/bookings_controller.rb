@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking.where(user_id: current_user))
+    @myhostings = policy_scope(Booking.joins(:experience).where(experience: { user_id: current_user.id }))
   end
 
   def show
