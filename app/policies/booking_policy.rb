@@ -27,11 +27,14 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? || record.user == user
+    user.admin? || record.user == user || record.experience.user == user
     # record: the experience passed to the `authorize` method in controller
     # user: the `current_user` signed in with Devise
   end
 
+  def status?
+    record.experience.user == user || user.admin?
+  end
 
   def destroy?
     user.admin? || record.user == user

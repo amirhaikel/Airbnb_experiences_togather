@@ -18,10 +18,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    #number of bookings with the experience and sum of the pax
+    #if capacity < number_of_pax + (existing bookings pax) => fail
+    #aggregate function
     @booking.user = current_user
     @booking.user_name = "#{current_user.first_name} #{current_user.last_name}"
     @booking.experience = @experience
-    @booking.status = "pending"
+    @booking.status = "Pending"
 
     authorize(@booking)
 
@@ -61,6 +64,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:booking_date, :number_of_pax, :comment)
+    params.require(:booking).permit(:booking_date, :number_of_pax, :comment, :status)
   end
 end
