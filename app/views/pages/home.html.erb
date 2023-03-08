@@ -7,12 +7,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="pages/home.scss">
 </head>
+
 <body>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
         <h1 class="homepage-h1">Welcome to Airbnb Experience!</h1>
         <p class="homepage-paragraph">Airbnb Experiences truly offer something for everyone. It's easy to book—just find the Experiences section on the Airbnb website or app. You can choose a specific city and dates, or browse through all experiences</p>
+         <%= link_to "Sign Up", new_user_session_path, class: "btn btn-danger" %>
       </div>
       <div class="col-md-6">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -40,23 +42,43 @@
     </div>
   </div>
 
-<div class="container">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-muted">© 2023 Airbnb Pte Ltd</p>
 
-    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-    </a>
-<%# <div>
-  <%= link_to "Show this experience", @experience %> 
-  <%# <%= link_to "Show this experience", experiences_path %>
+  <div class="container-fluid">
+    <div class="row border-0">
+      <div class="col-md-6 border-0">
+        <div class="card bg-whitesmoke text-black">
+          <h1>News this week</h1>
+          <%# <%=video_tag("easteregg.mp4", autoplay: true, muted: true, playsinline: true) %> %>
+          <p class="card-text">This week, a variety of online courses and webinars were announced, covering topics such as digital marketing, financial planning, and personal development.</p>
+          <p class="card-text"></p>
+        </div>
+      </div>
 
-  </footer>
-</div>
+      <div class="col-md-6 border-0">
+        <div class="card bg-whitesmoke text-black">
+            <h1>Fun for the family</h1>
+            <%# <%=video_tag("outdoor.mp4", autoplay: true, muted: true, playsinline: true) %> %>
+            <p class="card-text">There are plenty of fun activities for families to enjoy together, such as hiking in the great outdoors, playing board games, or having a movie night with some popcorn.</p>
+            <p class="card-text">La</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<footer>
+  <div class="container-fluid">
+      <p>&copy;2023 Airbnb Pte Ltd</p>
+  </div>
+</footer>
+
+
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script>
-   $(document).ready(function() {
+  $(document).ready(function() {
   var $carousel = $('#carouselExampleControls');
 
   $('#carouselPreviousButton').click(function() {
