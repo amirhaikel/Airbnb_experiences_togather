@@ -33,6 +33,7 @@ image_url = Faker::LoremFlickr.image(size: "300x400", search_terms: ['activity',
     name: Faker::Hobby.activity,
     description: Faker::Lorem.paragraph(sentence_count: 3),
     price: Faker::Commerce.price(range: 10..100),
+    capacity: rand(31)
   )
   experience.user = test_user
   experience.photos.attach(io: file, filename: "#{experience.name}.png", content_type: "image/png")

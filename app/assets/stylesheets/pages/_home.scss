@@ -1,5 +1,10 @@
 // Specific CSS for your home-page
+.container-fluid {
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+}
 
+/*typewritter font */
 .homepage-h1 {
   text-align: center;
   padding-top: 100px;
@@ -49,4 +54,37 @@
 .nav-item {
   padding: 2px;
   margin: 4px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  text-align: center;
+}
+
+// video//
+.card {
+  padding: 2px;
+}
+
+video {
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+
+  /* other styles */
+}
+
+.hm-video {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.card {
+  padding: 30px;
 }
