@@ -3,12 +3,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "/about", to: "pages#about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
   # Defines the root path route ("/")
   resources :experiences do
     resources :bookings, only: [:new, :create, :show, :index, :edit, :update]
     resources :bookings, only: [:destroy], as: :booking_destroy
-    resources :reviews, only: [:index, :destroy]
   end
 
   resources :bookings do

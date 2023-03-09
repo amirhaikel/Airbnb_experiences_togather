@@ -7,6 +7,8 @@ class ExperiencesController < ApplicationController
 
   def show
     @experience = Experience.find(params[:id])
+    @bookings = @experience.bookings
+    @reviews = @bookings.map(&:reviews).flatten
     @booking = Booking.new
   end
 

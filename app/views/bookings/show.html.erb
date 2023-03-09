@@ -24,6 +24,9 @@
     <%= link_to "View other experiences", experiences_path %>
     <%= button_to "Request for cancellation", [@experience, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch if policy(@booking).edit? %>
     <%= button_to "Approve cancellation", [@experience, @booking], params: {booking: {status: "Cancelled"}}, method: :patch if policy(@booking).status? if @booking.comment == "Cancellations Requested"%>
+    <% if @booking.status == "Confirmed" && !@booking.completed %>
+      <%= button_to "Mark as completed", [@experience, @booking], params: {booking: {completed: true, status: "Completed"}}, method: :patch if policy(@booking).status? %>
+    <% end %>
   <% elsif @booking.status == "Rejected" %>
     <%= link_to "View other experiences", experiences_path %>
   <% elsif @booking.status == "Cancelled" %>

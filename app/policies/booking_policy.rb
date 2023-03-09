@@ -2,12 +2,10 @@ class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      def resolve
-        if user.admin?
-          scope.all
-        else
-          scope.where(user_id: user.id).or(scope.where(experience: { user_id: user.id }))
-        end
+      if user.admin?
+        scope.all
+      else
+        scope.where(user_id: user.id).or(scope.where(experience: { user_id: user.id }))
       end
     end
   end
@@ -41,5 +39,4 @@ class BookingPolicy < ApplicationPolicy
   def destroy?
     user.admin? || record.user == user || record.experience.user == user
   end
-
 end
