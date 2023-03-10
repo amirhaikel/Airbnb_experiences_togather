@@ -1,23 +1,19 @@
 <h1> This is your booking! </h2>
 
-<ul>
-  <li> Experience name = <%= @booking.experience.name %> </li>
-  <br>
-  <li> Description = <%= @booking.experience.description %> </li>
-  <br>
-  <li> Price = <%= @booking.experience.price %> </li>
-  <br>
-  <li> User name = <%= @booking.user_name%>
-  <br>
-  <li> Booking_date = <%= @booking.booking_date %> </li>
 
-</ul>
-<p> See you there! </p>
+<%= render @booking %>
 
-<div>
-  <% if policy(@booking).edit? %>
-    <%= link_to "Edit your booking", edit_experience_booking_path(@experience, @booking) %>
-  <% end %>
-  <%= link_to "View other experiences", experiences_path %>
-  <%= link_to "Cancel your booking", experience_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
-</div>
+<%# #if booking status is not marked as completed %>
+  <div>
+    <% if policy(@booking).edit? %>
+      <%= link_to "Edit your booking", edit_experience_booking_path(@experience, @booking) %>
+    <% end %>
+    <%= link_to "View other experiences", experiences_path %>
+    <%= link_to "Cancel your booking", experience_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
+    <%# <%= link_to "Mark as completed" if host confirmed the pending booking, WHAT TO INCLUDE HERE TO MARK AS COMPLETE??? %> %>
+  </div>
+
+<%# if its marked as completed %>
+    <%# link to leave a review for the experience %>
+    <%# link to book other experiences %>
+    <%# link to edit a review if review is not null %>
