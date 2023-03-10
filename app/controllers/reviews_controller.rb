@@ -1,36 +1,52 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:edit, :update, :destroy]
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   def index
     # code to display all reviews for an experience or a booking
   end
 
+  def show
+    @booking = Booking.find(params[:booking_id])
+    authorize(@review)
+  end
+
+  def new
+    @booking = Booking.find(params[:booking_id])
+    @experience = Experience.find(@booking.experience_id)
+    @review = @booking.reviews.build
+    authorize(@review)
+  end
+
   def create
     @booking = Booking.find(params[:booking_id])
+    @experience = Experience.find(@booking.experience_id)
+    @review = @booking.reviews.build(review_params)
     if @booking.user != current_user
       redirect_to @booking, alert: "You are not authorized to leave a review for this booking."
       return
     end
 
-    @review = @booking.reviews.create(review_params)
-    authorize(@review)
     @review.user_name = @booking.user_name
-    @review.booking = @booking
-    @review.experience = @booking.experience
+    @review.experience = @experience
+
+    authorize(@review)
+
     if @review.save
-      redirect_to @booking, notice: 'Review was successfully created.'
+      redirect_to experience_booking_path(@experience, @booking), notice: 'Review was successfully created.'
     else
       render :new
     end
   end
 
   def edit
-    # code to display the form for editing a review
+    @booking = Booking.find(params[:booking_id])
+    authorize(@review)
   end
 
   def update
+    authorize(@review)
     if @review.update(review_params)
-      redirect_to @review.booking, notice: 'Review was successfully updated.'
+      redirect_to experience_booking_path(@review.experience_id, @review.booking_id), notice: 'Review was successfully updated.'
     else
       render :edit
     end
@@ -48,6 +64,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :user_name, :rating)
+    params.require(:review).permit(:rating, :content)
   end
 end

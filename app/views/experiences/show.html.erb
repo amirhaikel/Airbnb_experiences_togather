@@ -7,8 +7,8 @@
 <% end %>
 
 <h2>Reviews</h2>
-<% if @booking.reviews.any? %>
-  <% @booking.reviews.each do |review| %>
+<% if @reviews.present? %>
+  <% @reviews.each do |review| %>
     <div class="review">
       <p><strong>User Name:</strong> <%= review.user_name %></p>
       <p><strong>Rating:</strong> <%= review.rating %></p>

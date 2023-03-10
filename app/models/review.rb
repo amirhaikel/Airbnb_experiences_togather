@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :booking
+  belongs_to :experience
 
   validates :content, presence: true
   validates :user_name, presence: true

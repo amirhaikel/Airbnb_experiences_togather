@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookings do
-    resources :reviews, only: [:create, :edit, :update, :destroy]
+    resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy]
   end
   # root "articles#index"
 end

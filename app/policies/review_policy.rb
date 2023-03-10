@@ -6,6 +6,10 @@ class ReviewPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    user.admin? || record.booking.user == user
+  end
+
   def new?
     return create?
   end
