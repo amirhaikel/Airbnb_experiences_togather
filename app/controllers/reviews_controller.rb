@@ -7,18 +7,20 @@ class ReviewsController < ApplicationController
 
   def create
     @booking = Booking.find(params[:booking_id])
-    if @booking.user == current_user
-      @review = @booking.reviews.create(review_params)
-
-      authorize(@review)
-
-      if @review.save!
-        redirect_to @booking, notice: 'Review was successfully created.'
-      else
-        render :new
-      end
-    else
+    if @booking.user != current_user
       redirect_to @booking, alert: "You are not authorized to leave a review for this booking."
+      return
+    end
+
+    @review = @booking.reviews.create(review_params)
+    authorize(@review)
+    @review.user_name = @booking.user_name
+    @review.booking = @booking
+    @review.experience = @booking.experience
+    if @review.save
+      redirect_to @booking, notice: 'Review was successfully created.'
+    else
+      render :new
     end
   end
 

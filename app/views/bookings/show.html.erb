@@ -4,41 +4,44 @@
 
 <%# #if booking status is not completed and date < bookingdate  %>
 <div>
-  <% if @booking.status == "Pending"%>
-    <%= link_to "Edit your booking", edit_experience_booking_path(@experience, @booking) if policy(@booking).edit? %>
-    <% if policy(@booking).status? %>
-      <%= form_with url: [@experience, @booking], method: :patch do |form| %>
-        <%= form.text_field :comment, placeholder: "Add a comment", name: "booking[comment]" %>
-        <%= form.submit "Confirm the booking", class: "btn btn-primary", name: "booking[status]", value: "Confirmed" %>
-      <% end %>
-    <% end %>
+  <% if !@booking.completed && Date.today < @booking.booking_date %>
+    <% if @booking.status == "Pending"%>
+      <%= link_to "Edit your booking", edit_experience_booking_path(@experience, @booking) if policy(@booking).edit? %>
       <% if policy(@booking).status? %>
-      <%= form_with url: [@experience, @booking], method: :patch do |form| %>
-        <%= form.text_field :comment, placeholder: "Add a comment", name: "booking[comment]" %>
-        <%= form.submit "Reject the booking", class: "btn btn-primary", name: "booking[status]", value: "Rejected" %>
+        <%= form_with url: [@experience, @booking], method: :patch do |form| %>
+          <%= form.text_field :comment, placeholder: "Add a comment", name: "booking[comment]" %>
+          <%= form.submit "Confirm the booking", class: "btn btn-primary", name: "booking[status]", value: "Confirmed" %>
+        <% end %>
       <% end %>
+        <% if policy(@booking).status? %>
+        <%= form_with url: [@experience, @booking], method: :patch do |form| %>
+          <%= form.text_field :comment, placeholder: "Add a comment", name: "booking[comment]" %>
+          <%= form.submit "Reject the booking", class: "btn btn-primary", name: "booking[status]", value: "Rejected" %>
+        <% end %>
+      <% end %>
+      <%= link_to "View other experiences", experiences_path %>
+      <%= link_to "Cancel your booking", experience_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
+    <% elsif @booking.status == "Confirmed" %>
+      <%= link_to "View other experiences", experiences_path %>
+      <%= button_to "Request for cancellation", [@experience, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch if policy(@booking).edit? %>
+      <%= button_to "Approve cancellation", [@experience, @booking], params: {booking: {status: "Cancelled"}}, method: :patch if policy(@booking).status? if @booking.comment == "Cancellations Requested"%>
+      <% if @booking.status == "Confirmed" && !@booking.completed %>
+        <%= button_to "Mark as completed", [@experience, @booking], params: {booking: {completed: true, status: "Completed"}}, method: :patch if policy(@booking).status? %>
+      <% end %>
+    <% elsif @booking.status == "Rejected" %>
+      <%= link_to "View other experiences", experiences_path %>
+    <% elsif @booking.status == "Cancelled" %>
+      <%= link_to "View other experiences", experiences_path %>
+    <% else %>
+      <%= link_to "View other experiences", experiences_path %>
+      <%# the cancel your booking is for cleaning data purposes, user is only allowed to cancel the booking when the booking is pending %>
+      <%= link_to "Cancel your booking", experience_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
     <% end %>
-    <%= link_to "View other experiences", experiences_path %>
-    <%= link_to "Cancel your booking", experience_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
-  <% elsif @booking.status == "Confirmed" %>
-    <%= link_to "View other experiences", experiences_path %>
-    <%= button_to "Request for cancellation", [@experience, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch if policy(@booking).edit? %>
-    <%= button_to "Approve cancellation", [@experience, @booking], params: {booking: {status: "Cancelled"}}, method: :patch if policy(@booking).status? if @booking.comment == "Cancellations Requested"%>
-    <% if @booking.status == "Confirmed" && !@booking.completed %>
-      <%= button_to "Mark as completed", [@experience, @booking], params: {booking: {completed: true, status: "Completed"}}, method: :patch if policy(@booking).status? %>
-    <% end %>
-  <% elsif @booking.status == "Rejected" %>
-    <%= link_to "View other experiences", experiences_path %>
-  <% elsif @booking.status == "Cancelled" %>
-    <%= link_to "View other experiences", experiences_path %>
-  <% else %>
-    <%= link_to "View other experiences", experiences_path %>
-    <%# the cancel your booking is for cleaning data purposes, user is only allowed to cancel the booking when the booking is pending %>
-    <%= link_to "Cancel your booking", experience_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
+  <% elsif @booking.completed && Date.today > @booking.booking_date %>
+    <%# <%= link_to "Leave a review", new_experience_booking_review_path(@experience, @booking) if policy(@review).create? %>
+    <%# <%= link_to "Book other experiences", experiences_path %>
+    <%# <% if @review.present? %>
+      <%# <%= link_to "Edit review", edit_experience_booking_review_path(@experience, @booking, @review) if policy(@review).update? %> %>
+    <%# <% end %>
   <% end %>
 </div>
-
-<%# f booking status is confirmed and date > bookingdate %>
-    <%# link to leave a review for the experience %>
-    <%# link to book other experiences %>
-    <%# link to edit a review if review is not null %>
