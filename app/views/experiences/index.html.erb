@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-md-6 offset-md-3 text-center">
         <p class="text-success"><%= notice %></p>
-        <h1 class="text-white">Hello <%=current_user.first_name%>!</h1>
-          <h3 class="text-white">Start to host a new experience</h3>
+        <h1 class="text-black">Hello <%=current_user.first_name%>!</h1>
+          <h3 class="text-black">Start to host a new experience</h3>
           <p>What’s an experience?</p>
           <p>It’s an activity that goes beyond the typical tour or class, designed and led by locals all over the world. Show off your city, craft, cause, or culture by hosting an experience.</p>
         </div>
@@ -19,6 +19,7 @@
       <% experience.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
         <p>
+        <br>
         <%= link_to "Show this experience", experience, class: "btn btn-primary" %>
       </p>
       <%= render experience %>
