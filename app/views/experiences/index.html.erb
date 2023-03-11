@@ -19,6 +19,7 @@
       <% experience.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
         <p>
+        <br>
         <%= link_to "Show this experience", experience, class: "btn btn-primary" %>
       </p>
       <%= render experience %>
