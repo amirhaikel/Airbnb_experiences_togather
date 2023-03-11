@@ -12,10 +12,15 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
-        <h1 class="homepage-h1">Welcome to Airbnb Experience!</h1>
-        <p class="homepage-paragraph">Airbnb Experiences truly offer something for everyone. It's easy to book—just find the Experiences section on the Airbnb website or app. You can choose a specific city and dates, or browse through all experiences</p>
-         <%= link_to "Sign Up", new_user_session_path, class: "btn btn-danger" %>
-      </div>
+  <h1 class="homepage-h1">Welcome to Airbnb Experience!</h1>
+  <p class="homepage-paragraph">Airbnb Experiences truly offer something for everyone. It's easy to book—just find the Experiences section on the Airbnb website or app. You can choose a specific city and dates, or browse through all experiences</p>
+  <% if user_signed_in? %>
+    <!-- Code to show when the user is signed in -->
+  <% else %>
+    <%= link_to "Sign Up", new_user_session_path, class: "btn btn-danger" %>
+  <% end %>
+</div>
+
       <div class="col-md-6">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
@@ -48,23 +53,27 @@
       <div class="col-md-6 border-0">
         <div class="card bg-whitesmoke text-black">
           <h1>News this week</h1>
-          <%# <%=video_tag("easteregg.mp4", autoplay: true, muted: true, playsinline: true) %> %>
-          <p class="card-text">This week, a variety of online courses and webinars were announced, covering topics such as digital marketing, financial planning, and personal development.</p>
-          <p class="card-text"></p>
+          <%= image_tag 'https://images.unsplash.com/flagged/photo-1561668038-2742fcef75d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', alt: 'baking logo' %>
+          <%# <%=video_tag("easteregg.mp4", autoplay: true, muted: true, playsinline: true) %> 
+          <p class="card-text">Offering a wide and tantalising spread of courses,
+SSA Culinary Institute's (SSACI) main aim as a culinary institute is to provide training in baking and empower learners to be skilled workers and micro-entrepreneurs. SSACI is currently the largest halal baking school in Singapore.</p>
+          <%= link_to "Show this experience", experiences_path, class: "btn btn-primary" %>
         </div>
       </div>
 
       <div class="col-md-6 border-0">
         <div class="card bg-whitesmoke text-black">
             <h1>Fun for the family</h1>
-            <%# <%=video_tag("outdoor.mp4", autoplay: true, muted: true, playsinline: true) %> %>
-            <p class="card-text">There are plenty of fun activities for families to enjoy together, such as hiking in the great outdoors, playing board games, or having a movie night with some popcorn.</p>
-            <p class="card-text">La</p>
+            <%= image_tag 'https://images.unsplash.com/photo-1596673325912-423fb1425a5e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', alt: 'baking logo' %>
+            <%# <%=video_tag("outdoor.mp4", autoplay: true, muted: true, playsinline: true) %> 
+            <p class="card-text">Kayaking is a fun activity that involves moving through water in a small water vessel with the aid of a double-bladed paddle. It allows the boat driver to maneuver through waterways by sitting face-forward and propelling ahead with alternating side-to-side paddle strokes.</p>
+            <%= link_to "Show this experience", experiences_path, class: "btn btn-primary" %>
         </div>
       </div>
     </div>
   </div>
 </body>
+
 
 
 <footer>
