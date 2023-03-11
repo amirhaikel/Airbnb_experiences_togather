@@ -58,7 +58,7 @@
           <p class="card-text">Offering a wide and tantalising spread of courses,
 SSA Culinary Institute's (SSACI) main aim as a culinary institute is to provide training in baking and empower learners to be skilled workers and micro-entrepreneurs. SSACI is currently the largest halal baking school in Singapore.</p>
           <% id = Experience.find_by(name: "Bakes")&.id %>
-          <%= link_to "Show this experience", "http://localhost:3000/experiences/#{id}", class: "btn btn-primary" %>
+          <%= link_to "Show this experience", "https://airbnb-experiences-togather.herokuapp.com/experiences/#{id}", class: "btn btn-primary" %>
         </div>
       </div>
 
@@ -69,7 +69,7 @@ SSA Culinary Institute's (SSACI) main aim as a culinary institute is to provide 
             <%# <%=video_tag("outdoor.mp4", autoplay: true, muted: true, playsinline: true) %>
             <p class="card-text">Kayaking is a fun activity that involves moving through water in a small water vessel with the aid of a double-bladed paddle. It allows the boat driver to maneuver through waterways by sitting face-forward and propelling ahead with alternating side-to-side paddle strokes.</p>
             <% id = Experience.find_by(name: "Kayaks")&.id %>
-            <%= link_to "Show this experience", "http://localhost:3000/experiences/#{id}", class: "btn btn-primary" %>
+            <%= link_to "Show this experience", "https://airbnb-experiences-togather.herokuapp.com/experiences/#{id}", class: "btn btn-primary" %>
         </div>
       </div>
     </div>
