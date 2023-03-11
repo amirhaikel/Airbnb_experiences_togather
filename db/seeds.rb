@@ -11,12 +11,14 @@ require "faker"
 puts "Cleaning up database..."
 Experience.destroy_all
 User.destroy_all
+Booking.destroy_all
+Review.destroy_all
 puts "Database cleaned"
 puts "Creating test user..."
 User.destroy_all
 test_user = User.new(
-  first_name: "Laika",
-  last_name: "Chee",
+  first_name: "John",
+  last_name: "Doe",
   phone_no: 88888888,
   email: "johndoe@gmail.com",
   password: "password"

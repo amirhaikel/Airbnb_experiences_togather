@@ -1,0 +1,8 @@
+<h1>Review</h1>
+
+<p><strong>Rating:</strong> <%= @review.rating %></p>
+<p><strong>Description:</strong> <%= @review.content %></p>
+<p><strong>User:</strong> <%= @review.user_name %></p>
+
+<%= link_to 'Edit', edit_booking_review_path(@booking, @review) %>
+<%= link_to 'Back', experience_booking_path(@review.experience_id, @booking) %>
