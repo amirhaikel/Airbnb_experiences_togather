@@ -14,7 +14,7 @@
       <div class="col-md-6">
         <h1 class="homepage-h1">Welcome to Airbnb Experience!</h1>
         <p class="homepage-paragraph">Airbnb Experiences truly offer something for everyone. It's easy to book—just find the Experiences section on the Airbnb website or app. You can choose a specific city and dates, or browse through all experiences</p>
-         <%= link_to "Sign Up", new_user_session_path, class: "btn btn-danger" %>
+        <%= link_to "Sign Up", new_user_session_path, class: "btn btn-danger" %>
       </div>
       <div class="col-md-6">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -48,7 +48,8 @@
       <div class="col-md-6 border-0">
         <div class="card bg-whitesmoke text-black">
           <h1>News this week</h1>
-          <%# <%=video_tag("easteregg.mp4", autoplay: true, muted: true, playsinline: true) %> %>
+          <%= image_tag 'https://images.unsplash.com/photo-1588467850695-a898367ce465?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80' %>
+          <%# <%=video_tag("easteregg.mp4", autoplay: true, muted: true, playsinline: true) %> 
           <p class="card-text">This week, a variety of online courses and webinars were announced, covering topics such as digital marketing, financial planning, and personal development.</p>
           <p class="card-text"></p>
         </div>
@@ -57,9 +58,11 @@
       <div class="col-md-6 border-0">
         <div class="card bg-whitesmoke text-black">
             <h1>Fun for the family</h1>
-            <%# <%=video_tag("outdoor.mp4", autoplay: true, muted: true, playsinline: true) %> %>
+            
+            
+            <%# <%=video_tag("outdoor.mp4", autoplay: true, muted: true, playsinline: true) %> 
             <p class="card-text">There are plenty of fun activities for families to enjoy together, such as hiking in the great outdoors, playing board games, or having a movie night with some popcorn.</p>
-            <p class="card-text">La</p>
+            <p class="card-text"></p>
         </div>
       </div>
     </div>
