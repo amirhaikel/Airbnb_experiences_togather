@@ -7,6 +7,8 @@ class ExperiencesController < ApplicationController
 
   def show
     @experience = Experience.find(params[:id])
+    @bookings = @experience.bookings
+    @reviews = Review.where(booking_id: @bookings.pluck(:id))
     @booking = Booking.new
   end
 

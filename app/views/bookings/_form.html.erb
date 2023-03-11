@@ -5,6 +5,14 @@
     <%= f.input :booking_date, as: :date %>
   </div>
 
+  <div class="form-inputs">
+    <%= f.input :number_of_pax, as: :integer %>
+  </div>
+
+  <div class="form-inputs">
+  <%= f.text_field :comment, placeholder: "Add a comment" %>
+  </div>
+
   <div class="form-actions">
     <%= f.submit "Submit", class: "btn btn-success", onclick: "console.log('submit button clicked')" %>
   </div>
