@@ -43,7 +43,7 @@
     <% end %>
     <%= link_to "Book other experiences", experiences_path %>
     <% if @booking.reviews.present? %>
-      <%= link_to "View review", booking_review_path(@booking, @booking.reviews) %>
+      <%= link_to "View review", booking_review_path(@booking, @booking.reviews.first) %>
       <%# <%= link_to "Edit review", edit_experience_booking_review_path(@experience, @booking, @review) if policy(@review).update? %>
     <% end %>
   <% else %>
