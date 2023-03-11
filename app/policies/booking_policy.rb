@@ -5,13 +5,13 @@ class BookingPolicy < ApplicationPolicy
       if user.admin?
         scope.all
       else
-        scope.where(user_id: user.id)
+        scope.where(user_id: user.id).or(scope.where(experience: { user_id: user.id }))
       end
     end
   end
 
   def show?
-    return true
+    user.admin? || record.user == user || record.experience.user == user
   end
 
   def new?
@@ -27,14 +27,16 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? || record.user == user
+    user.admin? || record.user == user || record.experience.user == user
     # record: the experience passed to the `authorize` method in controller
     # user: the `current_user` signed in with Devise
   end
 
-
-  def destroy?
-    user.admin? || record.user == user
+  def status?
+    record.experience.user == user || user.admin?
   end
 
+  def destroy?
+    user.admin? || record.user == user || record.experience.user == user
+  end
 end
